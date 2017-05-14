@@ -13,7 +13,7 @@ let Navigation = () => {
                         <IndexLink to="/" activeClassName="active-link" style={{color: "green"}}>Timer</IndexLink>
                     </li>
                     <li>
-                        <Link to="/" activeClassName="active-link" style={{color: "green"}}>CountDown</Link>
+                        <Link to="/countdown" activeClassName="active-link" style={{color: "green"}}>CountDown</Link>
                     </li>
                 </ul>
             </div>
