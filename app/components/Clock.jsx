@@ -1,15 +1,15 @@
 import React from 'react'
 
 let Clock = React.createClass({
-    getDefaultProps: function () {
+    getDefaultProps: () => {
         return {
             totalSeconds: 0
         };
     },
-    propTypes: function () {
+    propTypes: () => {
         totalSeconds: React.PropTypes.number  
     },
-    formatSeconds: function (totalSeconds) {
+    formatSeconds: (totalSeconds) => {
         let seconds = totalSeconds % 60;
         let minutes = Math.floor(totalSeconds / 60);
 
@@ -23,7 +23,7 @@ let Clock = React.createClass({
         
         return minutes + ':' + seconds;
     },
-    render : function () {
+    render() {
         let {totalSeconds} = this.props;
         
         return (
