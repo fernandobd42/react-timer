@@ -5,3 +5,5 @@
 **first:** yarn install
 
 **then:**  webpack && yarn start
+
+**to test:** yarn test
