@@ -25722,7 +25722,7 @@
 
 	        if (strSeconds.match(/^[0-9]*$/)) {
 	            undefined.refs.seconds.value = '';
-	            undefined.props.onSetCountDown(parseInt(strSeconds, 10));
+	            undefined.props.onSetCountdown(parseInt(strSeconds, 10));
 	        }
 	    },
 	    render: function render() {
