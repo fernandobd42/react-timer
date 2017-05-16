@@ -7,11 +7,11 @@ module.exports = {
     './app/app.jsx'
   ],
   externals: {
-    jquery: 'jQuery'
+    jQuery: 'jQuery'
   },
   plugins: [
     new webpack.ProvidePlugin({
-      '$': 'jquery',
+      '$': 'jQuery',
       'jQuery': 'jquery'
     })
   ],

@@ -1,5 +1,6 @@
 import React from 'react'
 import Navigation from './Navigation.jsx'
+
 const Main = (props) => {
     return (
       <div>
