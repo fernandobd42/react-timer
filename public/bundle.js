@@ -25622,13 +25622,36 @@
 
 	var Countdown = _react2.default.createClass({
 	    displayName: 'Countdown',
-
 	    getInitialState: function getInitialState() {
-	        return { count: 0 };
+	        return {
+	            count: 0,
+	            countdownStatus: 'stopped'
+	        };
+	    },
+	    componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+	        if (this.state.countdownStatus !== prevState.countdownStatus) {
+	            switch (this.state.countdownStatus) {
+	                case 'started':
+	                    this.startTimer();
+	                    break;
+
+	            }
+	        }
+	    },
+	    startTimer: function startTimer() {
+	        var _this = this;
+
+	        this.timer = setInterval(function () {
+	            var newCount = _this.state.count - 1;
+	            _this.setState({
+	                count: newCount >= 0 ? newCount : 0
+	            });
+	        }, 1000);
 	    },
 	    handleSetCountdown: function handleSetCountdown(seconds) {
-	        undefined.setState({
-	            count: seconds
+	        this.setState({
+	            count: seconds,
+	            countdownStatus: 'started'
 	        });
 	    },
 	    render: function render() {
@@ -25660,7 +25683,6 @@
 
 	var Clock = _react2.default.createClass({
 	    displayName: 'Clock',
-
 	    getDefaultProps: function getDefaultProps() {
 	        return {
 	            totalSeconds: 0
@@ -25669,6 +25691,7 @@
 	    propTypes: function propTypes() {
 	        totalSeconds: _react2.default.PropTypes.number;
 	    },
+
 	    formatSeconds: function formatSeconds(totalSeconds) {
 	        var seconds = totalSeconds % 60;
 	        var minutes = Math.floor(totalSeconds / 60);
@@ -25715,14 +25738,13 @@
 
 	var CountdownForm = _react2.default.createClass({
 	    displayName: 'CountdownForm',
-
 	    onSubmit: function onSubmit(e) {
 	        e.preventDefault();
-	        var strSeconds = undefined.refs.seconds.value;
+	        var strSeconds = this.refs.seconds.value;
 
 	        if (strSeconds.match(/^[0-9]*$/)) {
-	            undefined.refs.seconds.value = '';
-	            undefined.props.onSetCountdown(parseInt(strSeconds, 10));
+	            this.refs.seconds.value = '';
+	            this.props.onSetCountdown(parseInt(strSeconds, 10));
 	        }
 	    },
 	    render: function render() {

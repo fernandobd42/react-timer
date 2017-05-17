@@ -1,12 +1,12 @@
 import React from 'react'
 
 let Clock = React.createClass({
-    getDefaultProps: () => {
+    getDefaultProps() {
         return {
             totalSeconds: 0
         };
     },
-    propTypes: () => {
+    propTypes() {
         totalSeconds: React.PropTypes.number  
     },
     formatSeconds: (totalSeconds) => {

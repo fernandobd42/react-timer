@@ -1,7 +1,7 @@
 import React from 'react'
 
 let CountdownForm = React.createClass({
-    onSubmit: function (e) {
+    onSubmit(e) {
         e.preventDefault();
         let strSeconds = this.refs.seconds.value;
 
