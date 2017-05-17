@@ -25649,7 +25649,6 @@
 	        }
 	    },
 	    componentWillUnmount: function componentWillUnmount() {
-	        console.log('componentDidUnmount');
 	        clearInterval(this.timer);
 	        this.timer = undefined;
 	    },
@@ -25694,6 +25693,11 @@
 	        return _react2.default.createElement(
 	            'div',
 	            null,
+	            _react2.default.createElement(
+	                'h1',
+	                { className: 'page-title' },
+	                'Countdown App'
+	            ),
 	            _react2.default.createElement(_Clock2.default, { totalSeconds: count }),
 	            renderControlArea()
 	        );
@@ -26270,7 +26274,7 @@
 
 
 	// module
-	exports.push([module.id, ".top-bar, .top-bar ul {\n  background-color: #333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .active-link {\n  font-weight: bold; }\n\n.clock {\n  align-items: center;\n  background-color: #B5D0E2;\n  border: 2px solid #2099E8;\n  border-radius: 50%;\n  display: flex;\n  height: 14rem;\n  justify-content: center;\n  margin: 4em auto;\n  width: 14rem; }\n\n.clock-text {\n  color: white;\n  font-size: 2.25rem;\n  font-weight: 300; }\n\n.controls {\n  display: flex;\n  justify-content: center; }\n\n.button {\n  padding: .75rem 3rem; }\n\n.button:first-child {\n  margin-right: 1.5rem; }\n", ""]);
+	exports.push([module.id, ".top-bar, .top-bar ul {\n  background-color: #333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .active-link {\n  font-weight: bold; }\n\n.clock {\n  align-items: center;\n  background-color: #B5D0E2;\n  border: 2px solid #2099E8;\n  border-radius: 50%;\n  display: flex;\n  height: 14rem;\n  justify-content: center;\n  margin: 4em auto;\n  width: 14rem; }\n\n.clock-text {\n  color: white;\n  font-size: 2.25rem;\n  font-weight: 300; }\n\n.controls {\n  display: flex;\n  justify-content: center; }\n\n.button {\n  padding: .75rem 3rem; }\n\n.button:first-child {\n  margin-right: 1.5rem; }\n\n.page-title {\n  margin: 2rem 0;\n  text-align: center; }\n", ""]);
 
 	// exports
 
