@@ -25640,7 +25640,6 @@
 	                    break;
 	                case 'stopped':
 	                    this.setState({ count: 0 });
-	                    break;
 	                case 'paused':
 	                    clearInterval(this.timer);
 	                    this.timer = undefined;
@@ -25842,7 +25841,7 @@
 	                    { className: 'button secondary', onClick: _this2.onStatusChange('paused') },
 	                    'Pause'
 	                );
-	            } else if (countdownStatus === 'paused') {
+	            } else {
 	                return _react2.default.createElement(
 	                    'button',
 	                    { className: 'button primary', onClick: _this2.onStatusChange('started') },
@@ -25876,15 +25875,70 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Clock = __webpack_require__(232);
+
+	var _Clock2 = _interopRequireDefault(_Clock);
+
+	var _Controls = __webpack_require__(234);
+
+	var _Controls2 = _interopRequireDefault(_Controls);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Timer = _react2.default.createClass({
 	    displayName: 'Timer',
+	    getInitialState: function getInitialState() {
+	        return {
+	            count: 0,
+	            timerStatus: 'stopped'
+	        };
+	    },
+	    componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+	        if (this.state.timerStatus !== prevState.timerStatus) {
+	            switch (this.state.timerStatus) {
+	                case 'started':
+	                    this.handleStart();
+	                    break;
+	                case 'stopped':
+	                    this.setState({ count: 0 });
+	                case 'paused':
+	                    clearInterval(this.timer);
+	                    this.timer = undefined;
+	                    break;
+	            }
+	        }
+	    },
+	    componentWillUnmount: function componentWillUnmount() {
+	        clearInterval(this.timer);
+	    },
+	    handleStart: function handleStart() {
+	        var _this = this;
+
+	        this.timer = setInterval(function () {
+	            _this.setState({
+	                count: _this.state.count + 1
+	            });
+	        }, 1000);
+	    },
+	    handleStatusChange: function handleStatusChange(newTimerStatus) {
+	        this.setState({ timerStatus: newTimerStatus });
+	    },
 	    render: function render() {
+	        var _state = this.state,
+	            count = _state.count,
+	            timerStatus = _state.timerStatus;
+
+
 	        return _react2.default.createElement(
-	            'p',
+	            'div',
 	            null,
-	            'Timer.jsx'
+	            _react2.default.createElement(
+	                'h1',
+	                { className: 'page-title' },
+	                'Timer App'
+	            ),
+	            _react2.default.createElement(_Clock2.default, { totalSeconds: count }),
+	            _react2.default.createElement(_Controls2.default, { countdownStatus: timerStatus, onStatusChange: this.handleStatusChange })
 	        );
 	    }
 	});
